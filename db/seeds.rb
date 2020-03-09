@@ -7,3 +7,4 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 aw = Word.create(name: "ˀaw", pos: "noun", definition: "deer")
 ana = Word.create(name: "ˀana", pos: "interjection", definition: "look!, look there!")
+may = Word.create(name: "mˀay", pos: "verb", definition: "set fire to (it)")
