@@ -8,3 +8,4 @@
 aw = Word.create(name: "ˀaw", pos: "noun", definition: "deer", origin: "native")
 ana = Word.create(name: "ˀana", pos: "interjection", definition: "look!, look there!", origin: "native")
 may = Word.create(name: "mˀay", pos: "verb", definition: "set fire to (it)", origin: "native")
+melikan = Word.create(name: "melikan", pos: "noun", definition: "American", origin: "English \"American\"")
