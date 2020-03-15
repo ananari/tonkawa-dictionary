@@ -5,6 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-aw = Word.create(name: "ˀaw", pos: "noun", definition: "deer")
-ana = Word.create(name: "ˀana", pos: "interjection", definition: "look!, look there!")
-may = Word.create(name: "mˀay", pos: "verb", definition: "set fire to (it)")
+aw = Word.create(name: "ˀaw", pos: "noun", definition: "deer", origin: "native")
+ana = Word.create(name: "ˀana", pos: "interjection", definition: "look!, look there!", origin: "native")
+may = Word.create(name: "mˀay", pos: "verb", definition: "set fire to (it)", origin: "native")
