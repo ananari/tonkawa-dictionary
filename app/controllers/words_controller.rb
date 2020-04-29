@@ -7,4 +7,7 @@ class WordsController < ApplicationController
     word = Word.find_by(name: params[:id])
     render json: word
   end
+  def home
+    render json: {yay: "you did it!"}
+  end
 end
