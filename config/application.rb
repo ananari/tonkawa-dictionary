@@ -17,7 +17,7 @@ module TonkawaDictionary
     # the framework and any gems in your application.
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins 'hidden-hollows-93851.herokuapp.com'
+        origins 'hidden-hollows-93851.herokuapp.com', 'localhost:3000'
         resource '*', headers: :any, methods: [:get, :post, :options]
       end
     end
