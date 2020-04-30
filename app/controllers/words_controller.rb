@@ -21,7 +21,7 @@ class WordsController < ApplicationController
     if res.length > 0
       render json: res
     else
-      render json: ["oops"]
+      render json: []
     end
   end 
 
