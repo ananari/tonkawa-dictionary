@@ -1,4 +1,5 @@
 class WordsController < ApplicationController
+  skip_before_action :verify_authenticity_token
   def index
     words = Word.all
     render json: words
