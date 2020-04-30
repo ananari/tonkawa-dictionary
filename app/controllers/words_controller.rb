@@ -12,12 +12,15 @@ class WordsController < ApplicationController
   end
 
   def search
-    rx = Regexp.new(search_params[query], g)
-    res = Word.find_all{|word| word[name].match(rx)}
+    res = {}
+    if search_params[:query]
+      rx = Regexp.new(search_params[:query], Regexp::IGNORECASE)
+      res = Word.all.find_all{|word| word[:name].match(rx)}
+    end
     if res.length > 0
       render json: res
     else
-      render json: {"oops": "sorry"}
+      render json: ["oops"]
     end
   end 
 
