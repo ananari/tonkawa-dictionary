@@ -10,8 +10,19 @@ class WordsController < ApplicationController
   def home
     render json: {yay: "you did it!"}
   end
+
   def search
-    raise params.inspect 
+    rx = Regexp.new(search_params[query], g)
+    res = Word.find_all{|word| word[name].match(rx)}
+    if res.length > 0
+      render json: res
+    else
+      render json: {"oops": "sorry"}
+    end
+  end 
+
+  def search_params
+    params.permit(:query)
   end 
 
 end
