@@ -10,4 +10,8 @@ class WordsController < ApplicationController
   def home
     render json: {yay: "you did it!"}
   end
+  def search
+    raise params.inspect 
+  end 
+
 end
