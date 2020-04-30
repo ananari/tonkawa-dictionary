@@ -13,7 +13,6 @@ class WordsController < ApplicationController
   end
 
   def search
-    raise params.inspect
     res = []
     rx = Regexp.new(search_params[:query], Regexp::IGNORECASE)
     case search_params[:language]
