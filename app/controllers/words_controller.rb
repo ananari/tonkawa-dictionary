@@ -14,7 +14,14 @@ class WordsController < ApplicationController
 
   def search
     res = []
-    rx = Regexp.new(search_params[:query], Regexp::IGNORECASE)
+    rx = ""
+    if search_params[:searchtype] == "plain"
+      stripped_query = search_params[:query].gsub(/[!@#$%^&*()=_+|;':",.<>?'\\\/]/, '')
+      rx = Regexp.new("\\b" + stripped_query, Regexp::IGNORECASE)
+    else 
+      query = search_params[:query].gsub(/\\/, "\\\\")
+      rx = Regexp.new(query)
+    end
     case search_params[:language]
     when "tonkawa" 
       res = Word.all.find_all{|word| word[:name].match(rx)}
@@ -26,8 +33,10 @@ class WordsController < ApplicationController
     render json: res
   end 
 
+  private
+
   def search_params
-    params.permit(:query, :language)
+    params.permit(:query, :language, :searchtype)
   end 
 
 end
