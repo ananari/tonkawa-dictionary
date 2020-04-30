@@ -13,20 +13,21 @@ class WordsController < ApplicationController
   end
 
   def search
-    res = {}
-    if search_params[:query]
-      rx = Regexp.new(search_params[:query], Regexp::IGNORECASE)
+    res = []
+    rx = Regexp.new(search_params[:query], Regexp::IGNORECASE)
+    case search_params[:language]
+    when "tonkawa" 
       res = Word.all.find_all{|word| word[:name].match(rx)}
-    end
-    if res.length > 0
-      render json: res
+    when "english"
+      res = Word.all.find_all{|word| word[:definition].match(rx)}
     else
-      render json: []
+      res = Word.all.find_all{|word| word[:name].match(rx) || word[:definition].match(rx)}
     end
+    render json: res
   end 
 
   def search_params
-    params.permit(:query)
+    params.permit(:query, :language)
   end 
 
 end
