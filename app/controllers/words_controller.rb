@@ -6,7 +6,7 @@ class WordsController < ApplicationController
   end
   def show
     word = Word.find(params[:id])
-    render json: word
+    render json: word, include: :words
   end
   def home
     render json: {yay: "you did it!"}
