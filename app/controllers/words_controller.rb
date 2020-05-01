@@ -17,18 +17,18 @@ class WordsController < ApplicationController
     rx = ""
     if search_params[:searchtype] == "plain"
       stripped_query = search_params[:query].gsub(/[!@#$%^&*()=_+|;':",.<>?'\\\/]/, '')
-      rx = Regexp.new("\\b" + stripped_query, Regexp::IGNORECASE)
+      rx = Regexp.new("\\b(?<!·)" + stripped_query, Regexp::IGNORECASE)
     else 
       query = search_params[:query].gsub(/\\/, "\\\\")
       rx = Regexp.new(query)
     end
     case search_params[:language]
     when "tonkawa" 
-      res = Word.all.find_all{|word| word.strip_name.match(rx)}
+      res = Word.all.find_all{|word| word.strip_name.match(rx) || word.half_strip_name.match(rx)}
     when "english"
       res = Word.all.find_all{|word| word[:definition].match(rx)}
     else
-      res = Word.all.find_all{|word| word.strip_name.match(rx) || word[:definition].match(rx)}
+      res = Word.all.find_all{|word| word.half_strip_name.match(rx) || (word.strip_name.match(rx) || word[:definition].match(rx))}
     end
     render json: res
   end 
