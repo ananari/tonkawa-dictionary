@@ -16,8 +16,7 @@ class WordsController < ApplicationController
     res = []
     rx = ""
     if search_params[:searchtype] == "plain"
-      stripped_query = search_params[:query].gsub(/[!@#$%^&*()=_+|;':",.<>?'\\\/]/, '')
-      rx = Regexp.new("\\b(?<!·)" + stripped_query, Regexp::IGNORECASE)
+      rx = Regexp.new("\\b(?<!·)" + Word.sub_chars(search_params[:query]), Regexp::IGNORECASE)
     else 
       query = search_params[:query].gsub(/\\/, "\\\\")
       rx = Regexp.new(query)
