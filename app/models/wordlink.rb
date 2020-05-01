@@ -1,0 +1,3 @@
+
+class Wordlink < ApplicationRecord
+end

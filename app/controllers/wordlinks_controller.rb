@@ -1,0 +1,2 @@
+class WordlinksController < ApplicationController
+end
