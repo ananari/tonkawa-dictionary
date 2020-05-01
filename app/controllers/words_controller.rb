@@ -24,11 +24,11 @@ class WordsController < ApplicationController
     end
     case search_params[:language]
     when "tonkawa" 
-      res = Word.all.find_all{|word| word[:name].match(rx)}
+      res = Word.all.find_all{|word| word.strip_name.match(rx)}
     when "english"
       res = Word.all.find_all{|word| word[:definition].match(rx)}
     else
-      res = Word.all.find_all{|word| word[:name].match(rx) || word[:definition].match(rx)}
+      res = Word.all.find_all{|word| word.strip_name.match(rx) || word[:definition].match(rx)}
     end
     render json: res
   end 
