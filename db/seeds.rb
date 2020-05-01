@@ -25,3 +25,5 @@ ca = Word.create(name: "cˀa·", pos: "noun", definition: "oak tree", origin: "n
 lumat = Word.create(name: "lumˀat", pos: "noun", definition: "all", origin: "native", notes: "")
 capxew = Word.create(name: "capxew", pos: "noun", definition: "black", origin: "native", notes: "")
 solpow = Word.create(name: "sˀolpow", pos: "verb", definition: "to be choking", origin: "native", notes: "")
+kola = Word.create(name: "ko·lˀa", pos: "noun", definition: "bird", origin: "native", notes: "")
+kolacapxew = Word.create(name: "ko·lˀa-capxew", pos: "noun", definition: "blackbird", origin: "native", notes: "")
